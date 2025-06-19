@@ -1,11 +1,11 @@
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://betdata-generator.streamlit.app/)
 
-Projeto full stack para geração de dados fictícios de transações financeiras no contexto de casas de apostas. Desenvolvido para auxiliar nos meus estudos em análises de dados e desenvolvimento full stack. Simulando operações reais como depósitos, saques e apostas.
+Esse projeto foi criado a partir da minha necessidade de estudar utilizando dados do contexto o qual eu já estou inserida, que é o mercado Igaming.Essa aplicação gera dados fictícios de transações no contexto de casas de apostas. 
 
 ## Principais funcionalidades
 
 - **Geração de transações financeiras realistas** exclusivamente via PIX
-- **Controle preciso** sobre quantidade de registros (1 a 10.000 linhas)
+- **Controle preciso** sobre quantidade de registros (1 a 100.000 linhas)
 - **Dados temporais estratégicos** com horários de pico de movimento
 - **Múltiplas categorias** de operações:
   - Apostas esportivas
