@@ -10,16 +10,64 @@ fake = Faker('pt_BR')
 def configurar_pagina():
     """Configurações visuais da aplicação"""
     st.set_page_config(
-        page_title="Gerador de Dados para Apostas",
-        page_icon="🎲",
+        page_title="Betting Data Generator",
+        page_icon="🎰",
         layout="centered",
     )
+    st.markdown("""
+<style>
+    /* botão principal */
+    .stButton>button {
+        background-color: #727272;  /* cinza */
+        color: white;
+        border-radius: 8px;
+        padding: 10px 24px;
+        font-weight: bold;
+        border: none;
+        transition: all 0.3s;
+        width: 100%;
+    }
+    
+    .stButton>button:hover {
+        background-color: #5c5c5c;  
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    
+    /* Estilo do spinner/barra de carregamento */
+    .stSpinner>div>div {
+        background-color: #4CAF50 !important;  
+        height: 4px !important;
+    }
+    
+    /* Texto do spinner */
+    .stSpinner>div>div>div {
+        color: #4CAF50 !important;
+        font-weight: bold;
+    }
+    .stApp {
+        margin-top: -90px;  
+        padding-top: 20px;
+    }
+    
+</style>
+""", unsafe_allow_html=True)
+
+    
 
 def criar_dados_apostas(categoria, num_linhas, num_colunas):
     """Gera dados realistas para operações de plataforma de apostas"""
     dados = []
     
-    # Dicionários de dados
+    # Mercados disponíveis
+    mercados = {
+        'Apostas Esportivas': ['Futebol', 'Basquete', 'Tênis'],
+        'Jogos de Cassino': ['Roleta', 'Blackjack', 'Poker'],
+        'Jogos de Crash': ['Aviator', 'Crash', 'Mines'],
+        'Depósitos': ['Transferência', 'Cartão de Crédito', 'Boleto'],
+        'Saques': ['Transferência', 'Cartão de Crédito', 'Boleto'],
+        'Transações': ['Depósito', 'Saque']
+    }
     esportes = ['Futebol', 'Basquete', 'Tênis', 'Vôlei', 'Futebol Americano']
     jogos_cassino = ['Roleta', 'Blackjack', 'Poker', 'Baccarat', 'Caça-Níqueis']
     jogos_crash = ['Aviator', 'Crash', 'Mines', 'Dice', 'Plinko']
@@ -193,30 +241,35 @@ def gerar_chave_pix():
     ])
 
 def mostrar_interface():
-    """Exibe a interface do usuário"""
-    st.title('🎲 Gerador de Dados para Plataforma de Apostas')
-    
+  
+    st.markdown("---")
+    st.markdown("""
+    <h1 style='
+        text-align: center;
+        font-family: Arial, sans-serif;
+        font-size: 36px;
+        '>🎲 Gerador de dados fictícios de casas de apostas</h1>
+    """, unsafe_allow_html=True)
+    st.markdown("---")
     st.write("""
-    ### Oie galera me chamo Alanna. Trabalho no mercado igaming e estou em transição de carreira para tecnologia.
-    Desenvolvi esta ferramenta para construir projetos e estudar utilizando informações do contexto que já estou inserida. O objetivo do programa é gerar dados ficticios de plataformas de apostas esportivas e cassinos.
+    Oie galera me chamo Alanna e estou em transição de carreira para tecnologia. Esse projeto foi criado a partir da minha necessidade de estudar utilizando dados do contexto o qual eu já estou inserida, que é o mercado Igaming.
+    O objetivo do programa é gerar dados fictícios de plataformas de apostas esportivas e cassinos.
     Use os controles abaixo para criar os dados que precisar.
     """)
-    
-    st.markdown("---")
-    
+
     categoria = st.selectbox(
-        '**Selecione o tipo de operação**',
+        '**Selecione o tipo de dado que deseja obter**',
         ['Apostas Esportivas', 'Jogos de Cassino', 'Jogos de Crash', 
          'Depósitos', 'Saques', 'Transações']
     )
     
     col1, col2 = st.columns(2)
     with col1:
-        num_linhas = st.slider('**Quantidade de registros**', 1, 1000, 50)
+        num_linhas = st.slider('**Quantidade de registros**', 1, 100000, 50)
     with col2:
         num_colunas = st.slider('**Número de colunas**', 1, 20, 10)
     
-    if st.button('**Gerar Dados**', type="primary"):
+    if st.button('**Gerando os dados**', type="primary", key="gerar_dados"):
         st.markdown("---")
         st.subheader("Resultados Gerados")
         
@@ -225,7 +278,7 @@ def mostrar_interface():
             st.dataframe(dados, use_container_width=True)
             
             st.download_button(
-                label="📥 Baixar como CSV",
+                label=" Baixar como CSV",
                 data=dados.to_csv(index=False, sep=';').encode('utf-8'),
                 file_name=f'dados_apostas_{categoria.lower().replace(" ", "_")}.csv',
                 mime='text/csv',
@@ -233,11 +286,8 @@ def mostrar_interface():
     
     st.markdown("---")
     st.write("""
-    ### Sobre este projeto
-    Desenvolvido com ❤️ por **Alanna Santos**  
-    [![GitHub](https://img.shields.io/badge/Meu_GitHub-100000?style=flat&logo=github&logoColor=white)](https://github.com/alannasant0s)
-    
-    *Dados fictícios para fins educacionais e de desenvolvimento*
+    Desenvolvido por **Alanna Santos**  
+    [![GitHub](https://img.shields.io/badge/GitHub-100000?style=flat&logo=github&logoColor=white)](https://github.com/alannasant0s) [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/alanna-santos/)
     """)
 
 # Configuração e execução
