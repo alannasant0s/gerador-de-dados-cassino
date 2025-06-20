@@ -1,0 +1,4 @@
+site2.0.py
+venv/
+__pycache__/
+*.pyc
