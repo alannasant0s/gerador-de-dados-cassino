@@ -252,9 +252,10 @@ def mostrar_interface():
     """, unsafe_allow_html=True)
     st.markdown("---")
     st.write("""
-    Oie galera me chamo Alanna e estou em transição de carreira para tecnologia. Esse projeto foi criado a partir da minha necessidade de estudar utilizando dados do contexto o qual eu já estou inserida, que é o mercado Igaming.
+    <p>Oie galera me chamo Alanna e estou em transição de carreira para tecnologia. Esse projeto foi criado a partir da minha necessidade de estudar utilizando dados do contexto o qual eu já estou inserida, que é o mercado Igaming.
     O objetivo do programa é gerar dados fictícios de plataformas de apostas esportivas e cassinos.
     Use os controles abaixo para criar os dados que precisar.
+    </p>
     """)
 
     categoria = st.selectbox(
