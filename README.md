@@ -40,7 +40,7 @@ Visite o app em produção:
 ### Opção 2: Execução local
 ```bash
 # Clone o repositório
-git clone https://github.com/alannasant0s/gerador-de-dados-cassino.git
+git clone https://github.com/alannasant0s/BetData-Generator.git
 
 # Instale as dependências
 pip install -r requirements.txt
