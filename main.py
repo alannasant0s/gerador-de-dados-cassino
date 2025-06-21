@@ -270,7 +270,7 @@ def mostrar_interface():
     with col2:
         num_colunas = st.slider('**Número de colunas**', 1, 20, 10)
     
-    if st.button('**Gerando os dados**', type="primary", key="gerar_dados"):
+    if st.button('**Gerar os dados**', type="primary", key="gerar_dados"):
         st.markdown("---")
         st.subheader("Resultados Gerados")
         
